@@ -31,11 +31,12 @@ set(SRC_DEMO_FILES src/demo.cpp)
 set(SRC_TEST_FILES test/test.cpp)
 
 # Setup Google Test
-set(GOOGLE_TEST_ARCHIVE "e2239ee6043f73722e7aa812a459f54a28552929")
+set(GOOGLE_TEST_ARCHIVE "release-1.11.0")
 include(FetchContent)
 FetchContent_Declare(
   googletest
-  URL https://github.com/google/googletest/archive/${GOOGLE_TEST_ARCHIVE}.zip
+  # URL https://github.com/google/googletest/archive/${GOOGLE_TEST_ARCHIVE}.zip
+  URL https://github.com/google/googletest/archive/refs/tags/${GOOGLE_TEST_ARCHIVE}.zip
 )
 # For Windows: Prevent overriding the parent project's compiler/linker settings
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
