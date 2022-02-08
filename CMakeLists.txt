@@ -1,6 +1,5 @@
 cmake_minimum_required(VERSION 3.16.3-3.22.1)
-# TODO: Search and replace labn with appropriate values in this file
-project(labn)
+project(lab02)
 
 # Set compiler flags based on environment
 if (MSVC)
@@ -44,23 +43,23 @@ FetchContent_MakeAvailable(googletest)
 
 enable_testing()
 
-add_executable(labn ${SRC_MAIN_FILES})
-add_executable(labn-demo ${SRC_DEMO_FILES})
-add_executable(labn-tests ${SRC_TEST_FILES})
+add_executable(lab02 ${SRC_MAIN_FILES})
+add_executable(lab02-demo ${SRC_DEMO_FILES})
+add_executable(lab02-tests ${SRC_TEST_FILES})
 
 # Now simply link against gtest or gtest_main as needed.
-target_link_libraries(labn-tests gtest_main)
+target_link_libraries(lab02-tests gtest_main)
 include(GoogleTest)
-gtest_discover_tests(labn-tests)
+gtest_discover_tests(lab02-tests)
 
-target_include_directories(labn PUBLIC ${CMAKE_CURRENT_LIST_DIR}/include ${CMAKE_CURRENT_LIST_DIR}/src)
-target_include_directories(labn-demo PUBLIC ${CMAKE_CURRENT_LIST_DIR}/include ${CMAKE_CURRENT_LIST_DIR}/src)
-target_include_directories(labn-tests PUBLIC ${CMAKE_CURRENT_LIST_DIR}/include ${CMAKE_CURRENT_LIST_DIR}/src)
+target_include_directories(lab02 PUBLIC ${CMAKE_CURRENT_LIST_DIR}/include ${CMAKE_CURRENT_LIST_DIR}/src)
+target_include_directories(lab02-demo PUBLIC ${CMAKE_CURRENT_LIST_DIR}/include ${CMAKE_CURRENT_LIST_DIR}/src)
+target_include_directories(lab02-tests PUBLIC ${CMAKE_CURRENT_LIST_DIR}/include ${CMAKE_CURRENT_LIST_DIR}/src)
 
 # add custom commands that copy data input files to target working directories
-add_custom_command(TARGET labn PRE_BUILD COMMAND ${CMAKE_COMMAND} -E copy_if_different ${CMAKE_CURRENT_LIST_DIR}/resource/main_data.txt ${CMAKE_CURRENT_BINARY_DIR})
-add_custom_command(TARGET labn-demo PRE_BUILD COMMAND ${CMAKE_COMMAND} -E copy_if_different ${CMAKE_CURRENT_LIST_DIR}/resource/demo_data.txt ${CMAKE_CURRENT_BINARY_DIR})
-add_custom_command(TARGET labn-tests PRE_BUILD COMMAND ${CMAKE_COMMAND} -E copy_if_different ${CMAKE_CURRENT_LIST_DIR}/resource/test_data.txt ${CMAKE_CURRENT_BINARY_DIR})
+add_custom_command(TARGET lab02 PRE_BUILD COMMAND ${CMAKE_COMMAND} -E copy_if_different ${CMAKE_CURRENT_LIST_DIR}/resource/main_data.txt ${CMAKE_CURRENT_BINARY_DIR})
+add_custom_command(TARGET lab02-demo PRE_BUILD COMMAND ${CMAKE_COMMAND} -E copy_if_different ${CMAKE_CURRENT_LIST_DIR}/resource/demo_data.txt ${CMAKE_CURRENT_BINARY_DIR})
+add_custom_command(TARGET lab02-tests PRE_BUILD COMMAND ${CMAKE_COMMAND} -E copy_if_different ${CMAKE_CURRENT_LIST_DIR}/resource/test_data.txt ${CMAKE_CURRENT_BINARY_DIR})
 
 # first we can indicate the documentation build as an option and set it to OFF by default
 option(BUILD_DOC "Build documentation" OFF)
